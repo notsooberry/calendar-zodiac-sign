@@ -12,6 +12,7 @@ public class Main {
         int day = in.nextInt();
 
         zodiac(month, day);
+        moonDate(year, month, day);
 
     }
     public void zodiac(int month, int day){
@@ -116,4 +117,36 @@ public class Main {
         }
         System.out.println("Your Zodiac Sign: " + zodiac_sign + "\n");
     }
+    public void moonDate(int year, int month, int day){
+        int lunar_age;
+        int lunar_number = 0;
+        int number = 1;
+
+        for (int i = 0; i < year; i++) {
+            if(number == 19){
+                number = 0;
+            }
+            number++;
+            lunar_number = number;
+        }
+
+        lunar_age = lunar_number * 11 - 14 + day + month;
+        while(lunar_age > 30){
+            lunar_age = lunar_age - 30;
+        }
+
+        if(lunar_age == 0 || lunar_age == 30){
+            System.out.println("New moon. Moon not visible");
+        }
+        else if(lunar_age > 0 && lunar_age <=7){
+            System.out.println("First quarter. The best time to observe is in the evening");
+        }
+        else if(lunar_age > 7 && lunar_age <= 15){
+            System.out.println("Full Moon. Visible all night from sunset to sunrise");
+        }
+        else if(lunar_age > 15){
+            System.out.println("Last Quarter. The Moon is best observed in the second half of the night, in the morning");
+        }
+    }
+
 }
